@@ -1,5 +1,6 @@
 package com.example.shualeduri2_anarusadze.todo.ui
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +21,7 @@ class TodoActivity : AppCompatActivity() {
     private lateinit var todoAdapter: TodoAdapter
     private lateinit var todoRecyclerView: RecyclerView
     private lateinit var userName: TextView
+    private lateinit var todoCount: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,7 @@ class TodoActivity : AppCompatActivity() {
 
         todoRecyclerView = findViewById(R.id.todoRecyclerView)
         userName = findViewById(R.id.usernameTextView)
+        todoCount = findViewById(R.id.todoCount)
 
         fetchData()
         setUserName()
@@ -45,6 +48,7 @@ class TodoActivity : AppCompatActivity() {
                         todoList.add(user)
                     }
                     setAdapter()
+                    setTodoCount()
                 }
             }
             override fun onFailure(call: Call<List<TodoModel>>, t: Throwable) {
@@ -62,6 +66,12 @@ class TodoActivity : AppCompatActivity() {
     private fun setUserName(){
         val name = intent.getStringExtra("USER_NAME")
         userName.text = name
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setTodoCount(){
+        val count = todoList.size.toString()
+        todoCount.text = "Todos: $count"
     }
 
 }

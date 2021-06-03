@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:padding="15dp"
+        android:paddingTop="15dp"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -20,11 +20,23 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Leanne Graham" />
 
+    <TextView
+        android:id="@+id/todoCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usernameTextView"
+        tools:text="Todos: 7" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/usernameTextView"
+        app:layout_constraintTop_toBottomOf="@id/todoCount"
         tools:listitem="@layout/todo_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
